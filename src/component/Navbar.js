@@ -11,7 +11,7 @@ const Navbar = () => {
                     로그인
                 </button>
             </div>
-            <div className="logo-section">logo</div>
+            <div className="logo-section">LOGO</div>
             <div className="menu-area">
                 <ul className="menu-list">
                     {menuList.map((item, index) => (
