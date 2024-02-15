@@ -5,6 +5,7 @@ import Login from "./page/Login";
 import ProductDetail from "./page/ProductDetail";
 import Navbar from "./component/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
 /* 
 1. 전체 상품 페이지, 로그인, 상품 상세페이지
 1-1. 네비게이션 바
@@ -16,6 +17,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 7. 상품 검색 기능
  */
 function App() {
+    // 로그인 환경 테스트를 위한 useState - true : 로그인 / false : 로그아웃
+    const [authenticate, setAuthenticate] = useState(false);
     return (
         <div>
             <Navbar />

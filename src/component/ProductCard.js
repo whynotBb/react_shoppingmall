@@ -1,12 +1,28 @@
+import styled from "styled-components";
+
 const ProductCard = ({ item }) => {
     return (
-        <div>
+        <Item>
             <img src={item?.img} />
             <div>{item?.choice === true ? "Conscious Choice" : ""}</div>
             <div>{item?.title}</div>
             <div>₩{(item?.price).toLocaleString()}</div>
             <div>{item?.new === true ? "new" : ""}</div>
-        </div>
+        </Item>
     );
 };
+const Item = styled.div`
+    cursor: pointer;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: all 0.3s;
+    }
+    &:hover {
+        img {
+            transform: scale(1.1);
+        }
+    }
+`;
 export default ProductCard;
