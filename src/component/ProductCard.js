@@ -1,13 +1,18 @@
-import styled from "styled-components";
+import {useNavigate} from 'react-router-dom';
+import styled from 'styled-components';
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({item}) => {
+    const navigate = useNavigate();
+    const goDetail = (el) => {
+        navigate(`/product/${el}`);
+    };
     return (
-        <Item>
+        <Item onClick={() => goDetail(item?.id)}>
             <img src={item?.img} />
-            <div>{item?.choice === true ? "Conscious Choice" : ""}</div>
+            <div>{item?.choice === true ? 'Conscious Choice' : ''}</div>
             <div>{item?.title}</div>
             <div>₩{(item?.price).toLocaleString()}</div>
-            <div>{item?.new === true ? "new" : ""}</div>
+            <div>{item?.new === true ? 'new' : ''}</div>
         </Item>
     );
 };
