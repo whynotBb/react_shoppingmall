@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Col, Container, Dropdown, Row} from 'react-bootstrap';
+import {Col, Container, Row} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
 
 const ProductDetail = ({productList}) => {
@@ -13,21 +13,17 @@ const ProductDetail = ({productList}) => {
                     return (
                         <Container key={index}>
                             <Row>
-                                <Col>{/* <img src={item.img} alt={item.title} /> */}</Col>
+                                <Col>
+                                    <img src={item.img} alt={item.title} />
+                                </Col>
                                 <Col>
                                     <h3>{item.title}</h3>
                                     <h4>{item.price}</h4>
-                                    <Dropdown>
-                                        <Dropdown.Toggle variant='secondary' id='dropdown-basic'>
-                                            사이즈 선택
-                                        </Dropdown.Toggle>
-
-                                        <Dropdown.Menu>
-                                            {item.size.map((size) => (
-                                                <Dropdown.Item>{size}</Dropdown.Item>
-                                            ))}
-                                        </Dropdown.Menu>
-                                    </Dropdown>
+                                    <select>
+                                        {item.size.map((size) => (
+                                            <option value={size}>{size}</option>
+                                        ))}
+                                    </select>
                                 </Col>
                             </Row>
                         </Container>

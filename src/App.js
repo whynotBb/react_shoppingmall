@@ -25,7 +25,17 @@ function App() {
         console.log('authenticate', authenticate);
         navigate('/');
     }, [authenticate]);
-
+    const [productList, setProductList] = useState([]);
+    const getProducts = async () => {
+        let url = `http://localhost:5000/products`;
+        let response = await fetch(url);
+        let data = await response.json();
+        console.log(data);
+        setProductList(data);
+    };
+    useEffect(() => {
+        getProducts();
+    }, []);
     // 로그인 여부에 따라 분기처리해야 할때 직접 써도 되고, 컴포넌트를 분리해도 된다.
     // const PrivateRoute = () => {
     //     return authenticate === true ? <ProductDetail /> : <Navigate to='/login' />;
@@ -35,10 +45,13 @@ function App() {
         <div>
             <Navbar />
             <Routes>
-                <Route path='/' element={<ProductAll />} />
+                <Route path='/' element={<ProductAll productList={productList} />} />
                 <Route path='/login' element={<Login setAuthenticate={setAuthenticate} />} />
                 {/* <Route path='/product/:id' element={<ProductDetail />} /> */}
-                <Route path='/product/:id' element={<PrivateRoute authenticate={authenticate} />} />
+                <Route
+                    path='/product/:id'
+                    element={<PrivateRoute authenticate={authenticate} productList={productList} />}
+                />
             </Routes>
         </div>
     );

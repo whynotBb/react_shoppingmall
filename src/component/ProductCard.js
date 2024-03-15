@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 const ProductCard = ({item}) => {
     const navigate = useNavigate();
-    const goDetail = (el) => {
+    const showDetail = (el) => {
         navigate(`/product/${el}`);
     };
     return (
-        <Item onClick={() => goDetail(item?.id)}>
-            <img src={item?.img} />
+        <Item onClick={() => showDetail(item?.id)}>
+            {/* <img src={item?.img} /> */}
             <div>{item?.choice === true ? 'Conscious Choice' : ''}</div>
             <div>{item?.title}</div>
             <div>₩{(item?.price).toLocaleString()}</div>
