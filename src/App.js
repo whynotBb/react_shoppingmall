@@ -1,5 +1,5 @@
 import './App.css';
-import {Navigate, Route, Routes, useNavigate} from 'react-router-dom';
+import {Navigate, Route, Routes, useNavigate, useSearchParams} from 'react-router-dom';
 import ProductAll from './page/ProductAll';
 import Login from './page/Login';
 import ProductDetail from './page/ProductDetail';
@@ -26,8 +26,11 @@ function App() {
         navigate('/');
     }, [authenticate]);
     const [productList, setProductList] = useState([]);
+    const [query, setQuery] = useSearchParams();
     const getProducts = async () => {
-        let url = `http://localhost:5000/products`;
+        let searchQuery = query.get('q') || '';
+        console.log('searchQuery', searchQuery);
+        let url = `http://localhost:5000/products?q=${searchQuery}`;
         let response = await fetch(url);
         let data = await response.json();
         console.log(data);
@@ -35,7 +38,8 @@ function App() {
     };
     useEffect(() => {
         getProducts();
-    }, []);
+    }, [query]);
+
     // 로그인 여부에 따라 분기처리해야 할때 직접 써도 되고, 컴포넌트를 분리해도 된다.
     // const PrivateRoute = () => {
     //     return authenticate === true ? <ProductDetail /> : <Navigate to='/login' />;

@@ -33,3 +33,9 @@ npm install react-bootstrap bootstrap
    회원가입이 되어 있지 않은 사용자 -> SignUp 페이지로 이동
 
 https://velog.io/@seokkitdo/React-Link-useNavigate
+
+과제
+
+1. 로그아웃 기능 만들기
+2. logo 선택 시 메인으로 들어감
+3. 모바일에서 모바일 메뉴 만들어주고, 상품 리스트 한장씩 세로 나열
